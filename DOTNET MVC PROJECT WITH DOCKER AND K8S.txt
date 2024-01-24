@@ -1,0 +1,63 @@
+													DOTNET MVC PROJECT WITH DOCKER AND K8S
+********************************************************************************************************************************
+DOCKERFILE
+********************************************************************************************************************************
+
+FROM microsoft/iis
+
+RUN powershell -NoProfile -Command Remove-Item -Recurse C:\inetpub\wwwroot\*
+
+WORKDIR /inetpub/wwwroot
+
+ADD content/ /inetpub/wwwroot
+
+RUN powershell -NoProfile -Command \
+    Install-WindowsFeature NET-Framework-45-ASPNET; \
+    Install-WindowsFeature Web-Asp-Net45; \
+    Import-Module IISAdministration;
+
+EXPOSE 80
+
+
+********************************************************************************************************************************
+K8S deployment.yml
+********************************************************************************************************************************
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: samplemvc
+  labels:
+    app: samplemvc
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: samplemvc
+      labels:
+        app: samplemvc
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": windows
+      containers:
+      - name: samplemvc
+        image: k8sdemoregistory.azurecr.io/k8sdemoregistorypoc:dockermvckcs
+        ports:
+          - containerPort: 80
+      imagePullSecrets:
+        - name: acr-secret1
+  selector:
+    matchLabels:
+      app: samplemvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: samplemvc
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+  selector:
+    app: samplemvc
+  type: LoadBalancer

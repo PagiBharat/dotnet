@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    container_name: dockercicddotnet-qa
+    restart: always
+    image: mehul1887/dockercicddotnet-qa
+    ports:
+      - 80:80
+    networks:
+      dockercicdhtml:
+        ipv4_address: 172.28.2.2
+
+  watchtower:
+    container_name: watchtower
+    image: v2tec/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/.docker/config.json:/config.json
+    command: -i 30 --cleanup 
+
+networks:
+  dockercicdhtml:
+    external: true
