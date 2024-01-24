@@ -12,3 +12,7 @@ RUN powershell -NoProfile -Command \
     Import-Module IISAdministration;	
 
 EXPOSE 80
+
+MAINTAINER MehulSolanki
+
+LABEL NAME=DotNET
