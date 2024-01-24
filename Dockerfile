@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/windows/servercore:ltsc2022
+# FROM mcr.microsoft.com/windows/servercore:ltsc2022
+FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 
 # RUN powershell -Command `
 #    Add-WindowsFeature Web-Server; `
