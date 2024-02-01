@@ -2,7 +2,7 @@
 
 # Dockerfiles
 
-1) Windowsservercore-20H2
+# 1) Windowsservercore-20H2
 
 FROM mcr.microsoft.com/windows/servercore:20H2
 
@@ -21,7 +21,7 @@ MAINTAINER MehulSolanki
 LABEL NAME=DotNET(DesktopOS)
 
 
-2) Windowsservercore-ltsc2022
+# 2) Windowsservercore-ltsc2022
 
 FROM mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2022
 
