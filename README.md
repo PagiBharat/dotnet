@@ -12,7 +12,7 @@ EXPOSE 80
 
 ENTRYPOINT ["C:\\ServiceMonitor.exe", "w3svc"]
 
-MAINTAINER MehulSolanki
+MAINTAINER BharatPagi
 
 LABEL NAME=DotNET(DesktopOS)
 
