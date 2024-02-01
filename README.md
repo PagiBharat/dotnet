@@ -1,5 +1,3 @@
-# Docker_DotNET
-
 # Dockerfiles
 
 # 1) Windowsservercore-20H2
