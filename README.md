@@ -5,6 +5,7 @@
 1) Windowsservercore-20H2
 
 FROM mcr.microsoft.com/windows/servercore:20H2
+
 RUN powershell -Command \
     Add-WindowsFeature Web-Server; \
     Invoke-WebRequest -UseBasicParsing -Uri "https://dotnetbinaries.blob.core.windows.net/servicemonitor/2.0.1.10/ServiceMonitor.exe" -OutFile "C:\ServiceMonitor.exe"
