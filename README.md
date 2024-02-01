@@ -31,7 +31,7 @@ RUN powershell -NoProfile -Command Install-WindowsFeature NET-Framework-45-ASPNE
 
 EXPOSE 80
 
-MAINTAINER MehulSolanki
+MAINTAINER BharatPagi
 
 LABEL NAME=DotNET(ServerOS)
 
